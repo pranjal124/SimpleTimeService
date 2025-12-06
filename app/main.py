@@ -21,4 +21,4 @@ def health():
 
 if __name__ == "__main__":
     # Bind to 0.0.0.0 so container can expose it
-    app.run(host="0.0.0.0", port=5000
+    app.run(host="0.0.0.0", port=5000)
