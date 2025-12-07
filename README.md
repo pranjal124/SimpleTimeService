@@ -46,7 +46,7 @@ Used by ALB for health checks:
 
 The application runs inside a Docker container using a non-root user, following security best practices.
 
-#Prerequisites
+# Prerequisites
 
 Before using or deploying this project, install the following tools:
 
@@ -73,7 +73,7 @@ Application Load Balancer
 CloudWatch Logs
 S3 (for Terraform remote state create bucket which you want to use for remote state and add in terraform block)
 
-#Run Application Locally With Docker
+# Run Application Locally With Docker
 
 -Build the Docker image:
 
@@ -88,11 +88,11 @@ docker run -p 5000:5000 simple-time-service:latest
 curl http://localhost:5000/
 curl http://localhost:5000/health
 
-###Jenkins Setup on AWS EC2 – Complete Guide
+### Jenkins Setup on AWS EC2 – Complete Guide
 
 Below are the steps to set up Jenkins on an EC2 instance and run fully automated CI/CD.
 
-#Launch EC2 Instance for Jenkins
+# Launch EC2 Instance for Jenkins
 
 Recommended:
 
@@ -112,7 +112,7 @@ Open inbound ports in ec2 security group:
 8080 → Jenkins
 22 → SSH
 
-#Install Jenkins
+# Install Jenkins
 sudo yum update -y
 sudo amazon-linux-extras install java-openjdk11 -y
 
@@ -130,7 +130,8 @@ http://<EC2-Public-IP>:8080
 Get initial password:
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
-#Install Docker on EC2 (Required for CI/CD)
+# Install Docker on EC2 (Required for CI/CD)
+
 sudo yum install docker -y
 sudo systemctl start docker
 sudo systemctl enable docker
@@ -138,12 +139,14 @@ sudo usermod -aG docker jenkins
 sudo usermod -aG docker ec2-user
 sudo reboot
 
-#Install AWS CLI on Jenkins EC2
+# Install AWS CLI on Jenkins EC2
+
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
 
-Install Terraform on EC2
+# Install Terraform on EC2
+
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo \
     https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
@@ -151,7 +154,7 @@ sudo yum -y install terraform
 
 Jenkins CI/CD Pipeline (Automated Build + Deploy)
 
-#This project contains a Jenkinsfile that performs:
+# This project contains a Jenkinsfile that performs:
 
 Checkout repository
 Detect AWS account ID
@@ -160,7 +163,7 @@ Push image to Amazon ECR
 Execute Terraform (init, plan, apply)
 Output ALB URL
 
-#Jenkins Job Setup
+# Jenkins Job Setup
 
 In Jenkins → New Item → Pipeline
 Select Pipeline script from SCM
@@ -180,7 +183,7 @@ Jenkins will:
 
 ===>access application using ALB URL
 
-Notes & Best Practices
+# Notes & Best Practices
 
 Destroy resources when done to avoid AWS billing:
 terraform destroy
