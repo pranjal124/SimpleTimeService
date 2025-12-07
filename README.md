@@ -192,4 +192,3 @@ terraform destroy
 Never commit AWS credentials to Git.
 Use IAM roles for EC2 and Jenkins (recommended approach).
 ECR repository creation is fully automated in pipeline.
-
