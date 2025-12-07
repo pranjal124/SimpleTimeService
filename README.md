@@ -30,9 +30,8 @@ The goal is to demonstrate DevOps engineering capabilities across:
 
 A minimal Python Flask microservice exposing two endpoints:
 
-### GET `/`
+### GET /
 Returns:
-```json
 {
   "timestamp": "2025-01-01T12:23:30Z",
   "ip": "CLIENT_IP"
