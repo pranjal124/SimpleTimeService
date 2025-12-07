@@ -8,13 +8,12 @@ terraform {
     }
   }
 
-  # Optional extra credit: remote state
-  # backend "s3" {
-  #   bucket         = "your-tfstate-bucket"
-  #   key            = "particle41-devops-challenge/terraform.tfstate"
-  #   region         = "ap-south-1"
-  #   dynamodb_table = "your-tfstate-lock-table"
-  # }
+  # remote state
+   backend "s3" {
+     bucket         = "simpletimeservice-pranjal"
+     key            = "particle41-devops-challenge/terraform.tfstate"
+     region         = "ap-south-1"
+  }
 }
 
 provider "aws" {
